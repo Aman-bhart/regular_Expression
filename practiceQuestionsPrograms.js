@@ -154,11 +154,26 @@ export const extractHashtags = (string) => string.match(/(#)/g);
 export const validateTime = (string) => /[0-2][0-3]:[0-5][0-9]/.test(string);
 
 // 29. Capture the area code and phone number from `(123) 456-7890`.
+export const areacodeAndPhoneNum = (string) => {
+  const phoneNumAreaCode = string.match(/\((\d+)\)\s+(\d+-?\d+)/);
+  return { areaCode: phoneNumAreaCode[1], phoneNum: phoneNumAreaCode[2] };
+};
+
 // 30. Find sequences of whitespace followed by a word.
+export const whitespace = (string) => string.match(/(?<=\w+)\s+/g);
+
 // 31. Match strings containing at least one uppercase and one digit.
+export const oneUpperAndDigit = (string) => string.match(/[A-Z]+.*\d+/);
+
 // 32. Find all non-alphanumeric characters in a string.
+export const nonAlphaNumeric = (string) => string.match(/[^a-z0-9]/gi);
+
 // 33. Match email addresses.
+export const matchEmail = (string) => string.match(/[a-z]+\d+@[a-z].com/i);
+
 // 34. Validate dates in the format `YYYY-MM-DD`.
+export const validateDate = (string) => /^\d{4}-\d{2}-\d{2}$/.test(string);
+
 // 35. Extract the filename and extension from a path like `/path/to/file.txt`.
 // 36. Find all duplicate words in a sentence.
 // 37. Match words that do not contain the letter "e".
