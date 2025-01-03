@@ -74,7 +74,7 @@ export const singleSpace = (string) => {
 
 //14. Match all words that start with the letter `c`.
 export const startsWithC = (string) => {
-  const startC = /c\w*/g;
+  const startC = /\bc\w*/g;
   return string.match(startC);
 };
 
@@ -151,7 +151,8 @@ export const repeatingChar = (string) => string.match(/(.)\1+/g);
 export const extractHashtags = (string) => string.match(/(#)/g);
 
 // 28. Validate a 24-hour time format like `"23:59"`.
-export const validateTime = (string) => /[0-2][0-3]:[0-5][0-9]/.test(string);
+export const validateTime = (string) =>
+  /([01][0-9]|2[0-9]):[0-5][0-9]/.test(string);
 
 // 29. Capture the area code and phone number from `(123) 456-7890`.
 export const areacodeAndPhoneNum = (string) => {
@@ -175,8 +176,17 @@ export const matchEmail = (string) => string.match(/[a-z]+\d+@[a-z].com/i);
 export const validateDate = (string) => /^\d{4}-\d{2}-\d{2}$/.test(string);
 
 // 35. Extract the filename and extension from a path like `/path/to/file.txt`.
+export const extractFileAndExten = (string) => {
+  const fileAndExt = string.match(/([^\/.]+).([a-z]+)$/);
+  return { fileName: fileAndExt[1], exten: fileAndExt[2] };
+};
+
 // 36. Find all duplicate words in a sentence.
+export const duplicateWords = (string) => string.match(/(\b\w+\b)(?=.*\1)/g);
+
 // 37. Match words that do not contain the letter "e".
+export const wordsWithoutE = (string) => string.match(/(\w+)(?!=e)/g);
+
 // 38. Extract the domain name from a URL like `https://www.example.com`.
 // 39. Match strings containing three consecutive vowels.
 // 40. Find all 4-letter palindromes in a string.
