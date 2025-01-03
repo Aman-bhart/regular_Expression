@@ -122,15 +122,37 @@ export const wordStartsVowel = (string) => {
 
 // 22. Find all sequences of two or more consecutive digits.
 export const consecutiveDigits = (string) => {
-  
+  const twoOrMoreConsecutiveDigit = /(\d){2,}/g;
+  return string.match(twoOrMoreConsecutiveDigit);
 };
 
 // 23. Match all words that contain exactly three letters.
+export const exactly3Words = (string) => {
+  const exactly3Word = /\b\w{3}/g;
+  return string.match(exactly3Word);
+};
+
 // 24. Find all occurrences of the word "cat" or "dog".
+export const occuranceOfCatOrDog = (string) => {
+  const catOrDog = /\bcat\b|\bdog\b/g;
+  return string.match(catOrDog).length;
+};
+
 // 25. Capture the first and last name from a string like `"John Doe"`.
+export const firstAndLastNames = (string) => {
+  const names = string.match(/(\w+)\s+(\w+)/);
+  return { firstName: names[1], lastName: names[2] };
+};
+
 // 26. Match strings with repeating characters (e.g., `"aa"`, `"bb"`).
+export const repeatingChar = (string) => string.match(/(.)\1+/g);
+
 // 27. Extract all the hashtags from a tweet.
+export const extractHashtags = (string) => string.match(/(#)/g);
+
 // 28. Validate a 24-hour time format like `"23:59"`.
+export const validateTime = (string) => /[0-2][0-3]:[0-5][0-9]/.test(string);
+
 // 29. Capture the area code and phone number from `(123) 456-7890`.
 // 30. Find sequences of whitespace followed by a word.
 // 31. Match strings containing at least one uppercase and one digit.
